@@ -82,3 +82,12 @@ header {
   word-spacing: -0.5rem;
   box-shadow: 7px 5px 0px -1px rgba(232,140,104,1);
 }
+
+#mouse_cursor {
+  position: relative;
+  width: 50px;
+  height: 65px;
+  top: 20px;
+  right: -80px;
+  color: #F6ECD5;
+}
