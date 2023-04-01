@@ -64,7 +64,7 @@ body {
 
 #container {
   height: 85vh;
-  width: 25vw;
+  width: 27.5vw;
   background-color: #B3DAC5;
   padding: 1.75rem;
 }
@@ -78,6 +78,7 @@ header {
   background-color: #F2BE5E;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  word-spacing: -0.5rem;
   box-shadow: 7px 5px 0px -1px rgba(232,140,104,1);
 }
