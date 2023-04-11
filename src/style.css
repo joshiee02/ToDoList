@@ -63,8 +63,8 @@ body {
 }
 
 #container {
-  height: 85vh;
-  width: 27.5vw;
+  height: 750px;
+  width: 525px;
   background-color: #B3DAC5;
   padding: 1.75rem;
 }
@@ -73,7 +73,7 @@ header {
   display: flex;
   font-family: 'Joystix';
   height: 12.5%;
-  width: 85%;
+  width: 87.5%;
   border: 2px solid black;
   background-color: #F2BE5E;
   justify-content: center;
@@ -83,11 +83,32 @@ header {
   box-shadow: 7px 5px 0px -1px rgba(232,140,104,1);
 }
 
-#mouse_cursor {
-  position: relative;
-  width: 50px;
-  height: 65px;
-  top: 20px;
-  right: -80px;
-  color: #F6ECD5;
+  #mouse_cursor {
+    position: relative;
+    width: 50px;
+    height: 65px;
+    top: 20px;
+    right: -65px;
+    color: #F6ECD5;
+  }
+
+section {
+  margin-top: 2rem;
+  width: 87.5%;
+  height: 82.5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  border: 1px solid red;
 }
+  /* use position relative to achieve the style of a div overlaying another div */
+  .taskContainer {
+    border: 1px solid black;
+    background-color: #F6ECD5;
+    border-radius: 16px;
+    border-right: 3px solid #E88D69;
+    border-bottom: 3px solid #E88D69;
+  }
+    .task {
+      
+    }
