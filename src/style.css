@@ -93,22 +93,37 @@ header {
   }
 
 section {
+    
   margin-top: 2rem;
   width: 87.5%;
   height: 82.5%;
   display: grid;
+    /* use px when you want to add the minimize button to overlay */
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   border: 1px solid red;
 }
-  /* use position relative to achieve the style of a div overlaying another div */
+
   .taskContainer {
     border: 1px solid black;
     background-color: #F6ECD5;
     border-radius: 16px;
-    border-right: 3px solid #E88D69;
-    border-bottom: 3px solid #E88D69;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
   }
-    .task {
-      
-    }
+  
+  .bgContainer {
+    border: 1px solid black;
+    background-color: #E88D69;
+    position: relative;
+    top: -95px;
+    right: -3px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+  }
+
+  
