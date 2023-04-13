@@ -135,6 +135,7 @@ section {
     right: -70px;
     border: 1px solid black;
     background-color: #F2BE5E;
+    box-shadow: 4px 4px 0px -1px rgba(232,140,104,1);
     width: 65%;
     height: 16%;
   }
