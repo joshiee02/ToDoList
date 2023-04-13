@@ -102,9 +102,6 @@ section {
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 } 
-  section > div {
-    border: 1px solid red;
-  }
 
   .taskContainer {
     border: 1px solid black;
@@ -120,7 +117,7 @@ section {
     border: 1px solid black;
     background-color: #E88D69;
     position: relative;
-    top: -98px;
+    top: -99px;
     right: -3px;
     z-index: 1;
     width: 95%;
@@ -129,6 +126,8 @@ section {
   }
   
   .controlBar {
+    display: flex;
+    justify-content: flex-end;
     z-index: 3;
     position: relative;
     top: -198px;
@@ -139,5 +138,24 @@ section {
     width: 65%;
     height: 16%;
   }
+    #buttons {
+      display: flex;
+      width: 27.5%;
+    }
+      #edit, #remove {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        width: 50%;
+        height: 100%;
+        border-top: 1px solid #F6ECD5;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        background-color: #F6ECD5;
+      }
+      #remove {
+        border-left: none;
+      }
 
   
