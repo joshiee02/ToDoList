@@ -100,16 +100,18 @@ section {
   display: grid;
     /* use px when you want to add the minimize button to overlay */
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  border: 1px solid red;
-}
+  gap: 0.5rem;
+} 
+  section > div {
+    border: 1px solid red;
+  }
 
   .taskContainer {
     border: 1px solid black;
     background-color: #F6ECD5;
     border-radius: 16px;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     position: relative;
     z-index: 2;
   }
@@ -118,12 +120,23 @@ section {
     border: 1px solid black;
     background-color: #E88D69;
     position: relative;
-    top: -95px;
+    top: -98px;
     right: -3px;
     z-index: 1;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     border-radius: 16px;
+  }
+  
+  .controlBar {
+    z-index: 3;
+    position: relative;
+    top: -198px;
+    right: -70px;
+    border: 1px solid black;
+    background-color: #F2BE5E;
+    width: 65%;
+    height: 16%;
   }
 
   
