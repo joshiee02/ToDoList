@@ -75,33 +75,34 @@ body > div {
   overflow: auto;
   overflow-x: hidden;
 }
-#container::-webkit-scrollbar {
-  width: 1.25rem;
-	background-color: #F6ECD5;
-  border: 1px inset black;
-}
+  /* scroll styles */
+  #container::-webkit-scrollbar {
+    width: 1.25rem;
+    background-color: #F6ECD5;
+    border: 1px inset black;
+  }
 
-#container::-webkit-scrollbar-thumb {
-  background-color: black;
-  border: 9px solid transparent;
-  border-radius: 12px;
-  background-clip: content-box;
-}
-#container::-webkit-scrollbar-button {
-  color: black;
-  background-color: #F6ECD5;
-  border: 1px inset black;
-}
-#container::-webkit-scrollbar-button:vertical:start:decrement {
-  background: url(/src/img/up-arrow.png);
-  background-position: center;
-  height: 1.5rem;
-}
-#container::-webkit-scrollbar-button:vertical:end:increment {
-  background-image: url(/src/img/down-arrow.png);
-  background-position: center;
-  height: 1.5rem;
-}
+  #container::-webkit-scrollbar-thumb {
+    background-color: black;
+    border: 9px solid transparent;
+    border-radius: 12px;
+    background-clip: content-box;
+  }
+  #container::-webkit-scrollbar-button {
+    color: black;
+    background-color: #F6ECD5;
+    border: 1px inset black;
+  }
+  #container::-webkit-scrollbar-button:vertical:start:decrement {
+    background: url(/src/img/up-arrow.png);
+    background-position: center;
+    height: 1.5rem;
+  }
+  #container::-webkit-scrollbar-button:vertical:end:increment {
+    background-image: url(/src/img/down-arrow.png);
+    background-position: center;
+    height: 1.5rem;
+  }
 
 
 header {
@@ -117,6 +118,12 @@ header {
   word-spacing: -0.5rem;
   box-shadow: 7px 5px 0px -1px rgba(232,140,104,1);
 }
+  header:active {
+    cursor: pointer;
+    color: #F2BE5E;
+    background-color: black;
+    border-color: #F6ECD5;
+  }
 
   #mouse_cursor {
     position: relative;
