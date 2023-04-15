@@ -93,14 +93,15 @@ header {
   }
 
 section {
-    
-  margin-top: 2rem;
+  padding-top: 2rem;
+  position: relative;
   width: 87.5%;
   height: 82.5%;
   display: grid;
-    /* use px when you want to add the minimize button to overlay */
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 102.7px;
   gap: 0.5rem;
+  overflow-y: scroll;
 } 
 
   .taskContainer {
