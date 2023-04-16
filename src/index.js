@@ -1,5 +1,5 @@
 import './style.css';
-import addTasks from './addToDoList';
+import addTasks from './addTasks';
 
 const header = document.querySelector('header');
 
