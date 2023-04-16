@@ -158,7 +158,7 @@ section {
     border: 1px solid black;
     background-color: #E88D69;
     position: relative;
-    top: -99px;
+    top: -94px;
     right: -3px;
     z-index: 1;
     width: 95%;
@@ -205,4 +205,79 @@ section {
         border-left: none;
       }
 
+@media (max-width: 320px) {
   
+  body > div {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    height: 10%;
+  }
+    #mouse_cursor {
+      width: 40px;
+      height: 50px;
+      top: 15px;
+      right: -30px;
+    }
+  
+  section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 415px) {
+
+  body > div {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #container {
+    overflow: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 90%;
+    height: 10%;
+  }
+    #mouse_cursor {
+      width: 40px;
+      height: 50px;
+      top: 15px;
+      right: -30px;
+    }
+  
+  section {
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 150px;
+    gap: 1rem;
+  }
+    .bgContainer {
+      top: -140px;
+    }
+
+    .controlBar {
+      top: -290px;
+      height: 14%;
+    }
+      #edit, #remove {
+        align-items: center;
+      }
+}
