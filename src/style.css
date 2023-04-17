@@ -124,7 +124,7 @@ header {
     border-color: #F6ECD5;
   }
 
-  #mouse_cursor {
+  .mouse_cursor {
     position: relative;
     width: 50px;
     height: 65px;
@@ -132,6 +132,60 @@ header {
     right: -65px;
     color: #F6ECD5;
   }
+
+  #modal {
+    width: 83.75%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 1.75rem;
+  }
+  #modal_h1 {
+    padding-top: 0.1rem;
+    padding-right: 3.1rem;
+  }
+  .modal_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal_cursor {
+    top: -25px;
+    right: -155px;
+  }
+  form > label {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  fieldset {
+    display: flex;
+    gap: 1rem;
+  }
+
+  fieldset legend {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  fieldset label {
+    font-size: 0.75rem;
+    padding: 0.25rem;
+  }
+  fieldset div {
+    display: flex;
+    align-items: center;
+  }
+
+ .hidden {
+  display: none;
+}
+
+/* .hidden_form {
+  display: none;
+} */
 
 section {
   padding-top: 2rem;
