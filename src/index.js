@@ -1,8 +1,8 @@
 import './style.css';
-import addTasks from './addTasks';
+import showForm from './addTasks';
 
 const header = document.querySelector('header');
 
 header.addEventListener('click', () => {
-  addTasks();
+  showForm();
 });
