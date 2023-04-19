@@ -169,6 +169,7 @@ header {
       text-align: center;
     }
     input, textarea {
+      text-align: center;
       margin: 0.5rem;
       border-radius: 4px;
       padding: 0.25rem;
