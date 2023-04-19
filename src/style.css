@@ -134,7 +134,7 @@ header {
   }
 
   #modal {
-    width: 83.75%;
+    width: 87.5%;
     height: 75%;
     display: flex;
     flex-direction: column;
@@ -143,16 +143,11 @@ header {
   }
   #modal_h1 {
     padding-top: 0.1rem;
-    padding-right: 3.1rem;
+    padding-right: 3.15rem;
   }
 
-  /* might delete */
-  /* .modal_form {
-    display: flex;
-    flex-direction: column;
-  } */
   .modal_cursor {
-    top: -25px;
+    top: -24px;
     right: -155px;
   }
 
@@ -180,33 +175,33 @@ header {
         resize: none;
       }
 
-  fieldset {
-    display: flex;
-    align-items: center;
-  }
-    fieldset legend {
-      padding: 0.25rem;
-      text-align: center;
+    fieldset {
+      display: flex;
+      align-items: center;
     }
-    fieldset input {
-      accent-color: black;
-    }
-    fieldset label {
-      font-size: 0.75rem;
-      margin-right: 0.25rem;
-    }
-    label[for="low"] {
-      text-shadow: 1px 1px 1px black;
-      color:  green;
-    }
-    label[for="medium"] {
-      text-shadow: 1px 1px 1px black;
-      color: orange;
-    }
-    label[for="high"] {
-      text-shadow: 1px 1px 1px black;
-      color:  red;
-    }
+      fieldset legend {
+        padding: 0.25rem;
+        text-align: center;
+      }
+      fieldset input {
+        accent-color: black;
+      }
+      fieldset label {
+        font-size: 0.75rem;
+        margin-right: 0.25rem;
+      }
+      label[for="low"] {
+        text-shadow: 1px 1px 1px black;
+        color:  green;
+      }
+      label[for="medium"] {
+        text-shadow: 1px 1px 1px black;
+        color: orange;
+      }
+      label[for="high"] {
+        text-shadow: 1px 1px 1px black;
+        color:  red;
+      }
  .hidden {
   display: none;
 }
