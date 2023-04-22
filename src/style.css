@@ -75,7 +75,7 @@ body > div {
   height: 100%;
   width: 100%;
   background-color: #B3DAC5;
-  overflow: auto;
+  overflow: scroll;
   overflow-x: hidden;
 }
   /* scroll styles */
