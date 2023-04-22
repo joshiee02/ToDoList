@@ -260,6 +260,7 @@ section {
   }
   
   .controlBar {
+    font-family: 'ArcadeClassic';
     display: flex;
     justify-content: flex-end;
     z-index: 3;
@@ -272,6 +273,14 @@ section {
     width: 65%;
     height: 16%;
   }
+    h2 {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.75rem;
+      text-align: center;
+    }
     #buttons {
       display: flex;
       width: 27.5%;
