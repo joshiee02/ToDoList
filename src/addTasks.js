@@ -7,6 +7,7 @@ export default function showForm() {
   const img = document.querySelector('.mouse_cursor');
   img.classList.add('modal_cursor');
 
+  // adds the expanding animation of the form
   setTimeout(() => {
     const form = document.querySelector('form');
     form.classList.remove('hidden');;
@@ -14,4 +15,13 @@ export default function showForm() {
       form.classList.add('show')
     }, 100);
   }, 300);
+}
+
+function getTask() {
+  const taskName = document.querySelector('input[name="title"]').value;
+  const description = document.querySelector('textarea[id="description"]').value;
+  const dueDate = document.querySelector('input[name="due-date"]').value;
+  const taskPriority = document.querySelector('input[name="priority"]:checked').value;
+
+  return { taskName, description, dueDate, taskPriority }
 }
