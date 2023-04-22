@@ -1,4 +1,4 @@
-export default function showForm() {
+function showForm() {
   // adds classes to elements affected when form is active
   const header = document.querySelector('header');
   header.id = 'modal';
@@ -16,6 +16,48 @@ export default function showForm() {
     }, 100);
   }, 300);
 }
+function addTask() {
+  const section = document.querySelector('section');
+
+  // Create the gridContainer element
+  const gridContainer = document.createElement('div');
+  gridContainer.classList.add('gridContainer');
+
+  // Create the other elements and append them to gridContainer as necessary
+  const taskContainer = document.createElement('div');
+  taskContainer.classList.add('taskContainer');
+  gridContainer.appendChild(taskContainer);
+
+  const bgContainer = document.createElement('div');
+  bgContainer.classList.add('bgContainer');
+  gridContainer.appendChild(bgContainer);
+
+  const controlBar = document.createElement('div');
+  controlBar.classList.add('controlBar');
+  gridContainer.appendChild(controlBar);
+
+  const buttons = document.createElement('div');
+  buttons.setAttribute('id', 'buttons');
+  controlBar.appendChild(buttons);
+
+  const editButton = document.createElement('button');
+  editButton.setAttribute('id', 'edit');
+  buttons.appendChild(editButton);
+
+  const editIcon = document.createElement('i');
+  editIcon.classList.add('las', 'la-edit');
+  editButton.appendChild(editIcon);
+
+  const removeButton = document.createElement('button');
+  removeButton.setAttribute('id', 'remove');
+  buttons.appendChild(removeButton);
+
+  const removeIcon = document.createElement('i');
+  removeIcon.classList.add('las', 'la-times');
+  removeButton.appendChild(removeIcon);
+
+  section.appendChild(gridContainer);
+}
 
 function getTask() {
   const taskName = document.querySelector('input[name="title"]').value;
@@ -25,3 +67,5 @@ function getTask() {
 
   return { taskName, description, dueDate, taskPriority }
 }
+
+export { showForm, addTask };
