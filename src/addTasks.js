@@ -10,13 +10,13 @@ function showForm() {
   // adds the expanding animation of the form
   setTimeout(() => {
     const form = document.querySelector('form');
-    form.classList.remove('hidden');;
-    setTimeout(function() {
-      form.classList.add('show')
+    form.classList.remove('hidden');
+    setTimeout(() => {
+      form.classList.add('show');
     }, 100);
   }, 300);
 }
-function addTask() {
+function addTask(taskName) {
   const section = document.querySelector('section');
 
   // Create the gridContainer element
@@ -35,6 +35,10 @@ function addTask() {
   const controlBar = document.createElement('div');
   controlBar.classList.add('controlBar');
   gridContainer.appendChild(controlBar);
+
+  const h2 = document.createElement('h2');
+  h2.textContent = taskName;
+  controlBar.appendChild(h2);
 
   const buttons = document.createElement('div');
   buttons.setAttribute('id', 'buttons');
@@ -60,12 +64,11 @@ function addTask() {
 }
 
 function getTask() {
-  const taskName = document.querySelector('input[name="title"]').value;
+  const taskName = document.querySelector('input[id="title"]').value;
   const description = document.querySelector('textarea[id="description"]').value;
-  const dueDate = document.querySelector('input[name="due-date"]').value;
+  const dueDate = document.querySelector('input[id="due-date"]').value;
   const taskPriority = document.querySelector('input[name="priority"]:checked').value;
-
-  return { taskName, description, dueDate, taskPriority }
+  return { taskName, description, dueDate, taskPriority };
 }
 
-export { showForm, addTask };
+export { showForm, addTask, getTask };
