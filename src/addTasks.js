@@ -16,17 +16,41 @@ function showForm() {
     }, 100);
   }, 300);
 }
-function addTask(taskName) {
+function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
   const section = document.querySelector('section');
 
   // Create the gridContainer element
   const gridContainer = document.createElement('div');
   gridContainer.classList.add('gridContainer');
 
-  // Create the other elements and append them to gridContainer as necessary
+  // Create the child elements on gridContainer
   const taskContainer = document.createElement('div');
   taskContainer.classList.add('taskContainer');
   gridContainer.appendChild(taskContainer);
+
+  // inserts description inputted by user using getTask()
+  const description = document.createElement('p');
+  description.setAttribute('id', 'description');
+  description.textContent = taskDescription;
+  taskContainer.appendChild(description);
+
+  // inserts dueDate inputted by user using getTask()
+  const dueDate = document.createElement('span');
+  dueDate.setAttribute('id', 'dueDate');
+  dueDate.textContent = taskDueDate;
+  switch (taskPriority) {
+    case 'low':
+      dueDate.classList.add('priorityLow');
+      break;
+
+    case 'medium':
+      dueDate.classList.add('priorityMedium');
+      break;
+
+    default:
+      dueDate.classList.add('priorityHigh');
+  }
+  taskContainer.appendChild(dueDate);
 
   const bgContainer = document.createElement('div');
   bgContainer.classList.add('bgContainer');
@@ -36,6 +60,7 @@ function addTask(taskName) {
   controlBar.classList.add('controlBar');
   gridContainer.appendChild(controlBar);
 
+  // inserts title inputted by user using getTask()
   const h2 = document.createElement('h2');
   h2.textContent = taskName;
   controlBar.appendChild(h2);
@@ -68,7 +93,9 @@ function getTask() {
   const description = document.querySelector('textarea[id="description"]').value;
   const dueDate = document.querySelector('input[id="due-date"]').value;
   const taskPriority = document.querySelector('input[name="priority"]:checked').value;
-  return { taskName, description, dueDate, taskPriority };
+  return {
+    taskName, description, dueDate, taskPriority,
+  };
 }
 
 export { showForm, addTask, getTask };

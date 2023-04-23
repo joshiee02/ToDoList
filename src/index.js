@@ -14,5 +14,5 @@ submitButton.addEventListener('click', () => {
 
   task = getTask();
   console.log(task);
-  addTask(task.taskName);
+  addTask(task.taskName, task.description, task.dueDate, task.taskPriority);
 });
