@@ -98,4 +98,20 @@ function getTask() {
   };
 }
 
-export { showForm, addTask, getTask };
+function getExistingTask() {
+  const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
+  if (existingTasks) {
+    for (let i = 0; i < existingTasks.length; i += 1) {
+      addTask(
+        existingTasks[i].taskName,
+        existingTasks[i].description,
+        existingTasks[i].dueDate,
+        existingTasks[i].taskPriority,
+      );
+    }
+  }
+}
+
+export {
+  showForm, addTask, getTask, getExistingTask,
+};
