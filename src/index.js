@@ -1,5 +1,9 @@
 import './style.css';
-import { showForm, addTask, getTask } from './addTasks';
+import {
+  showForm, addTask, getTask, getExistingTask,
+} from './addTasks';
+
+getExistingTask();
 
 const header = document.querySelector('header');
 header.addEventListener('click', () => {
@@ -15,6 +19,7 @@ submitButton.addEventListener('click', () => {
   const userTask = getTask();
   addTask(userTask.taskName, userTask.description, userTask.dueDate, userTask.taskPriority);
 
+  // store the tasks locally
   const existingTasks = JSON.parse(localStorage.getItem('all-tasks')) || [];
   existingTasks.push(userTask);
   localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
