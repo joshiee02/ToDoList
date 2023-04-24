@@ -1,21 +1,43 @@
-function showForm() {
-  // adds classes to elements affected when form is active
-  const header = document.querySelector('header');
-  header.id = 'modal';
-  const h1 = document.querySelector('h1');
-  h1.id = 'modal_h1';
-  const img = document.querySelector('.mouse_cursor');
-  img.classList.add('modal_cursor');
+const form = {
+  formActive: false,
+  showForm() {
+    // adds classes to elements affected when form is active
+    this.formActive = true;
+    const header = document.querySelector('header');
+    header.style.height = '75%';
+    header.id = 'modal';
+    const h1 = document.querySelector('h1');
+    h1.id = 'modal_h1';
+    const img = document.querySelector('.mouse_cursor');
+    img.classList.add('modal_cursor');
 
-  // adds the expanding animation of the form
-  setTimeout(() => {
-    const form = document.querySelector('form');
-    form.classList.remove('hidden');
+    // adds the expanding animation of the form
     setTimeout(() => {
-      form.classList.add('show');
+      const form = document.querySelector('form');
+      form.classList.remove('hidden');
+      setTimeout(() => {
+        form.classList.add('show');
+      }, 100);
+    }, 300);
+  },
+  hideForm() {
+    this.formActive = false;
+    const header = document.querySelector('header');
+    header.style.height = '12.5%';
+    header.removeAttribute('id');
+    const h1 = document.querySelector('h1');
+    h1.removeAttribute('id');
+    const img = document.querySelector('.mouse_cursor');
+    img.classList.remove('modal_cursor');
+    const form = document.querySelector('form');
+    form.classList.add('hidden');
+
+    // adds the expanding animation of the form
+    setTimeout(() => {
+      form.classList.remove('show');
     }, 100);
-  }, 300);
-}
+  },
+};
 
 function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
   const section = document.querySelector('section');
@@ -121,5 +143,5 @@ function getExistingTask() {
 }
 
 export {
-  showForm, addTask, getTask, getExistingTask, removeInput,
+  form, addTask, getTask, getExistingTask, removeInput,
 };
