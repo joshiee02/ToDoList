@@ -16,6 +16,7 @@ function showForm() {
     }, 100);
   }, 300);
 }
+
 function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
   const section = document.querySelector('section');
 
@@ -98,6 +99,13 @@ function getTask() {
   };
 }
 
+function removeInput() {
+  document.querySelector('input[id="title"]').value = '';
+  document.querySelector('textarea[id="description"]').value = '';
+  document.querySelector('input[id="due-date"]').value = '';
+  document.querySelector('input[name="priority"]:checked').value = '';
+}
+
 function getExistingTask() {
   const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
   if (existingTasks) {
@@ -113,5 +121,5 @@ function getExistingTask() {
 }
 
 export {
-  showForm, addTask, getTask, getExistingTask,
+  showForm, addTask, getTask, getExistingTask, removeInput,
 };

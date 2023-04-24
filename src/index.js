@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  showForm, addTask, getTask, getExistingTask,
+  showForm, addTask, getTask, getExistingTask, removeInput,
 } from './addTasks';
 
 getExistingTask();
@@ -24,4 +24,6 @@ submitButton.addEventListener('click', () => {
   existingTasks.push(userTask);
   localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
   console.log(JSON.parse(localStorage.getItem('all-tasks')));
+
+  removeInput();
 });
