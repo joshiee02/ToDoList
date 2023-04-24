@@ -116,11 +116,15 @@ header {
   border: 2px solid black;
   background-color: #F2BE5E;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   font-size: 1.5rem;
   word-spacing: -0.5rem;
   box-shadow: 7px 5px 0px -1px rgba(232,140,104,1);
+  transition: height 0.5s ease-in-out;
 }
+  h1 {
+    padding-top: 1.85rem;
+  }
   header:active {
     cursor: pointer;
   }
@@ -128,8 +132,8 @@ header {
   .mouse_cursor {
     position: relative;
     width: 50px;
-    height: 65px;
-    top: 20px;
+    height: 70px;
+    top: 29px;
     right: -65px;
     color: #F6ECD5;
   }
