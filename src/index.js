@@ -1,13 +1,18 @@
 import './style.css';
 import {
-  showForm, addTask, getTask, getExistingTask, removeInput,
+  form, addTask, getTask, getExistingTask, removeInput,
 } from './addTasks';
 
 getExistingTask();
 
 const header = document.querySelector('header');
 header.addEventListener('click', () => {
-  showForm();
+  if (form.formActive === false) {
+    form.showForm();
+  } else if (form.formActive === true) {
+    form.hideForm();
+    header.style.height = '12.5%';
+  }
 });
 
 const submitButton = document.querySelector('button[type="submit"]');
