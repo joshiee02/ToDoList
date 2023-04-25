@@ -137,7 +137,22 @@ header {
     right: -65px;
     color: #F6ECD5;
   }
-
+  /* temporary, find a way to position this element properly */
+  #closeFormBtn {
+    position: absolute;
+    top: 96px;
+    right: 722px;
+    padding: 0;
+    text-align: center;
+    width: 21px;
+    height: 21px;
+    background-color: red;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .show {
+    opacity: 1 !important;
+  }
   #modal {
     width: 87.5%;
     height: 75%;
@@ -174,9 +189,6 @@ header {
     height: 100%;
     opacity: 0;
     transition: opacity 0.35s ease;
-  }
-  form.show {
-    opacity: 1;
   }
     form label {
       text-align: center;
