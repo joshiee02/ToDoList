@@ -7,12 +7,12 @@ getExistingTask();
 
 const header = document.querySelector('header');
 header.addEventListener('click', () => {
-  if (form.formActive === false) {
-    form.showForm();
-  } else if (form.formActive === true) {
-    form.hideForm();
-    header.style.height = '12.5%';
-  }
+  form.showForm();
+});
+
+const closeFormBtn = document.querySelector('#closeFormBtn');
+closeFormBtn.addEventListener('click', () => {
+  form.hideForm();
 });
 
 const submitButton = document.querySelector('button[type="submit"]');

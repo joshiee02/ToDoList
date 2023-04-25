@@ -1,8 +1,8 @@
 const form = {
   formActive: false,
   showForm() {
-    // adds classes to elements affected when form is active
     this.formActive = true;
+    // adds classes to elements affected when form is active
     const header = document.querySelector('header');
     header.style.height = '75%';
     header.id = 'modal';
@@ -15,7 +15,10 @@ const form = {
     setTimeout(() => {
       const form = document.querySelector('form');
       form.classList.remove('hidden');
+      const closeFormBtn = document.querySelector('#closeFormBtn');
+      closeFormBtn.classList.remove('hidden');
       setTimeout(() => {
+        closeFormBtn.classList.add('show');
         form.classList.add('show');
       }, 100);
     }, 300);
@@ -31,11 +34,10 @@ const form = {
     img.classList.remove('modal_cursor');
     const form = document.querySelector('form');
     form.classList.add('hidden');
-
-    // adds the expanding animation of the form
-    setTimeout(() => {
-      form.classList.remove('show');
-    }, 100);
+    form.classList.remove('show');
+    const closeFormBtn = document.querySelector('#closeFormBtn');
+    closeFormBtn.classList.add('hidden');
+    closeFormBtn.classList.remove('show');
   },
 };
 
