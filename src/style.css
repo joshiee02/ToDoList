@@ -139,9 +139,9 @@ header {
   }
   /* temporary, find a way to position this element properly */
   #closeFormBtn {
-    position: absolute;
-    top: 96px;
-    right: 722px;
+    position: relative;
+    top: -120px;
+    right: -180px;
     padding: 0;
     text-align: center;
     width: 21px;
