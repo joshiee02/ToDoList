@@ -41,12 +41,32 @@ const form = {
   },
 };
 
+// generate a random ID to assign to a task
+let id;
+const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
+function generateID() {
+  let randomInt;
+  function getRandomInt() {
+    randomInt = Math.floor(Math.random() * 100 + 1);
+  }
+  getRandomInt();
+  if (existingTasks) {
+    existingTasks.forEach((task) => {
+      if (task.dataNum === randomInt) {
+        getRandomInt();
+      } id = randomInt;
+    });
+  }
+  id = randomInt;
+}
+
 function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
   const section = document.querySelector('section');
 
   // Create the gridContainer element
   const gridContainer = document.createElement('div');
   gridContainer.classList.add('gridContainer');
+  gridContainer.setAttribute('data-num', id);
 
   // Create the child elements on gridContainer
   const taskContainer = document.createElement('div');
@@ -114,12 +134,13 @@ function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
 }
 
 function getTask() {
+  const dataNum = id;
   const taskName = document.querySelector('input[id="title"]').value;
   const description = document.querySelector('textarea[id="description"]').value;
   const dueDate = document.querySelector('input[id="due-date"]').value;
   const taskPriority = document.querySelector('input[name="priority"]:checked').value;
   return {
-    taskName, description, dueDate, taskPriority,
+    taskName, description, dueDate, taskPriority, dataNum,
   };
 }
 
@@ -145,5 +166,5 @@ function getExistingTask() {
 }
 
 export {
-  form, addTask, getTask, getExistingTask, removeInput,
+  form, addTask, getTask, getExistingTask, removeInput, generateID,
 };
