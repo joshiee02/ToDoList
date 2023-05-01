@@ -5,19 +5,19 @@ import {
 
 getExistingTask();
 
-selector.header.addEventListener('click', () => {
+selector.header.addEventListener('click', (event) => {
   event.stopPropagation();
   if (!form.formActive) {
     form.showForm();
   }
 });
 
-selector.closeForm_btn.addEventListener('click', () => {
+selector.closeForm_btn.addEventListener('click', (event) => {
   event.stopPropagation();
   form.hideForm();
 });
 
-selector.submitTask_btn.addEventListener('click', () => {
+selector.submitTask_btn.addEventListener('click', (event) => {
   // avoids submit button to refresh
   event.preventDefault();
   // generateID();
