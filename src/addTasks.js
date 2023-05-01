@@ -164,7 +164,7 @@ function removeInput() {
   document.querySelector('input[id="title"]').value = '';
   document.querySelector('textarea[id="description"]').value = '';
   document.querySelector('input[id="due-date"]').value = '';
-  document.querySelector('input[name="priority"]:checked').value = '';
+  document.querySelector('input[name="priority"]:checked').checked = false;
 }
 
 export {
