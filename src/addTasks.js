@@ -1,50 +1,53 @@
+const selector = {
+  header: document.querySelector('header'),
+  h1: document.querySelector('h1'),
+  cursor_img: document.querySelector('.mouse_cursor'),
+
+  form: document.querySelector('form'),
+  closeForm_btn: document.querySelector('#closeFormBtn'),
+
+  section: document.querySelector('section'),
+  taskRemove_btn: document.querySelectorAll('#remove'),
+  submitTask_btn: document.querySelector('button[type="submit"]'),
+};
+
 const form = {
   formActive: false,
   showForm() {
     this.formActive = true;
-    // adds classes to elements affected when form is active
-    const header = document.querySelector('header');
-    header.style.height = '75%';
-    header.id = 'modal';
-    const h1 = document.querySelector('h1');
-    h1.id = 'modal_h1';
-    const img = document.querySelector('.mouse_cursor');
-    img.classList.add('modal_cursor');
+    selector.header.style.height = '75%';
+    selector.header.id = 'modal';
+    selector.h1.id = 'modal_h1';
+    selector.cursor_img.classList.add('modal_cursor');
 
     // adds the expanding animation of the form
     setTimeout(() => {
-      const form = document.querySelector('form');
-      form.classList.remove('hidden');
-      const closeFormBtn = document.querySelector('#closeFormBtn');
-      closeFormBtn.classList.remove('hidden');
+      selector.form.classList.remove('hidden');
+      selector.closeForm_btn.classList.remove('hidden');
       setTimeout(() => {
-        closeFormBtn.classList.add('show');
-        form.classList.add('show');
+        selector.closeForm_btn.classList.add('show');
+        selector.form.classList.add('show');
       }, 100);
     }, 300);
   },
   hideForm() {
     this.formActive = false;
-    const header = document.querySelector('header');
-    header.style.height = '12.5%';
-    header.removeAttribute('id');
-    const h1 = document.querySelector('h1');
-    h1.removeAttribute('id');
-    const img = document.querySelector('.mouse_cursor');
-    img.classList.remove('modal_cursor');
-    const form = document.querySelector('form');
-    form.classList.add('hidden');
-    form.classList.remove('show');
-    const closeFormBtn = document.querySelector('#closeFormBtn');
-    closeFormBtn.classList.add('hidden');
-    closeFormBtn.classList.remove('show');
+
+    selector.header.style.height = '12.5%';
+    selector.header.removeAttribute('id');
+    selector.h1.removeAttribute('id');
+    selector.cursor_img.classList.remove('modal_cursor');
+    selector.form.classList.add('hidden');
+    selector.form.classList.remove('show');
+    selector.closeForm_btn.classList.add('hidden');
+    selector.closeForm_btn.classList.remove('show');
   },
 };
 
 // generate a random ID to assign to a task
-let id;
-const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
 function generateID() {
+  const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
+  let id;
   let randomInt;
   function getRandomInt() {
     randomInt = Math.floor(Math.random() * 100 + 1);
@@ -52,21 +55,19 @@ function generateID() {
   getRandomInt();
   if (existingTasks) {
     existingTasks.forEach((task) => {
-      if (task.dataNum === randomInt) {
+      if (task.taskDataID === randomInt) {
         getRandomInt();
       } id = randomInt;
     });
-  }
-  id = randomInt;
+  } id = randomInt;
+  return id;
 }
 
-function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
-  const section = document.querySelector('section');
-
+function addTask(taskDataID, taskName, taskDescription, taskDueDate, taskPriority,) {
   // Create the gridContainer element
   const gridContainer = document.createElement('div');
   gridContainer.classList.add('gridContainer');
-  gridContainer.setAttribute('data-num', id);
+  gridContainer.setAttribute('dataID', taskDataID);
 
   // Create the child elements on gridContainer
   const taskContainer = document.createElement('div');
@@ -130,18 +131,33 @@ function addTask(taskName, taskDescription, taskDueDate, taskPriority) {
   removeIcon.classList.add('las', 'la-times');
   removeButton.appendChild(removeIcon);
 
-  section.appendChild(gridContainer);
+  selector.section.appendChild(gridContainer);
 }
 
 function getTask() {
-  const dataNum = id;
+  const taskDataID = generateID();
   const taskName = document.querySelector('input[id="title"]').value;
-  const description = document.querySelector('textarea[id="description"]').value;
-  const dueDate = document.querySelector('input[id="due-date"]').value;
+  const taskDescription = document.querySelector('textarea[id="description"]').value;
+  const taskDueDate = document.querySelector('input[id="due-date"]').value;
   const taskPriority = document.querySelector('input[name="priority"]:checked').value;
   return {
-    taskName, description, dueDate, taskPriority, dataNum,
+    taskDataID, taskName, taskDescription, taskDueDate, taskPriority,
   };
+}
+
+function getExistingTask() {
+  const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
+  if (existingTasks) {
+    for (let i = 0; i < existingTasks.length; i += 1) {
+      addTask(
+        existingTasks[i].taskDataID,
+        existingTasks[i].taskName,
+        existingTasks[i].taskDescription,
+        existingTasks[i].taskDueDate,
+        existingTasks[i].taskPriority,
+      );
+    }
+  }
 }
 
 function removeInput() {
@@ -151,20 +167,6 @@ function removeInput() {
   document.querySelector('input[name="priority"]:checked').value = '';
 }
 
-function getExistingTask() {
-  const existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
-  if (existingTasks) {
-    for (let i = 0; i < existingTasks.length; i += 1) {
-      addTask(
-        existingTasks[i].taskName,
-        existingTasks[i].description,
-        existingTasks[i].dueDate,
-        existingTasks[i].taskPriority,
-      );
-    }
-  }
-}
-
 export {
-  form, addTask, getTask, getExistingTask, removeInput, generateID,
+  form, addTask, getTask, getExistingTask, removeInput, selector,
 };

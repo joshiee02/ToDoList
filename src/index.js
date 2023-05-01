@@ -1,46 +1,48 @@
 import './style.css';
 import {
-  form, addTask, getTask, getExistingTask, removeInput, generateID,
+  form, addTask, getTask, getExistingTask, removeInput, selector,
 } from './addTasks';
 
 getExistingTask();
 
-const header = document.querySelector('header');
-header.addEventListener('click', () => {
+selector.header.addEventListener('click', () => {
   event.stopPropagation();
   if (!form.formActive) {
     form.showForm();
   }
 });
 
-const closeFormBtn = document.querySelector('#closeFormBtn');
-closeFormBtn.addEventListener('click', () => {
+selector.closeForm_btn.addEventListener('click', () => {
   event.stopPropagation();
   form.hideForm();
 });
 
-let taskRemoveBtn = document.querySelectorAll('#remove');
-const submitButton = document.querySelector('button[type="submit"]');
-submitButton.addEventListener('click', () => {
+selector.submitTask_btn.addEventListener('click', () => {
   // avoids submit button to refresh
   event.preventDefault();
-  generateID();
+  // generateID();
 
   // gets tasks and inserts them in the taskContainer
   const userTask = getTask();
-  addTask(userTask.taskName, userTask.description, userTask.dueDate, userTask.taskPriority);
+  addTask(
+    userTask.taskDataID,
+    userTask.taskName,
+    userTask.taskDescription,
+    userTask.taskDueDate,
+    userTask.taskPriority,
+  );
   // store the tasks locally
   const existingTasks = JSON.parse(localStorage.getItem('all-tasks')) || [];
   existingTasks.push(userTask);
   localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
   removeInput();
 
-  taskRemoveBtn = document.querySelectorAll('#remove');
-  taskRemoveBtn.forEach((button) => {
+  selector.taskRemove_btn = document.querySelectorAll('#remove');
+  selector.taskRemove_btn.forEach((button) => {
     button.addEventListener('click', () => {
-      const dataNum = button.closest('.gridContainer').getAttribute('data-num');
+      const dataID = button.closest('.gridContainer').getAttribute('dataID');
       let existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
-      existingTasks = existingTasks.filter((task) => task.dataNum !== +dataNum);
+      existingTasks = existingTasks.filter((task) => task.taskDataID !== +dataID);
       localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
       button.closest('.gridContainer').remove();
     });
@@ -48,11 +50,11 @@ submitButton.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  taskRemoveBtn.forEach((button) => {
+  selector.taskRemove_btn.forEach((button) => {
     button.addEventListener('click', () => {
-      const dataNum = button.closest('.gridContainer').getAttribute('data-num');
+      const dataID = button.closest('.gridContainer').getAttribute('dataID');
       let existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
-      existingTasks = existingTasks.filter((task) => task.dataNum !== +dataNum);
+      existingTasks = existingTasks.filter((task) => task.taskDataID !== +dataID);
       localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
       button.closest('.gridContainer').remove();
     });
