@@ -50,6 +50,7 @@ selector.submitTask_btn.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  selector.taskRemove_btn = document.querySelectorAll('#remove');
   selector.taskRemove_btn.forEach((button) => {
     button.addEventListener('click', () => {
       const dataID = button.closest('.gridContainer').getAttribute('dataID');
