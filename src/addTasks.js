@@ -1,4 +1,5 @@
 import isPast from 'date-fns/isPast';
+import compareAsc from 'date-fns/compareAsc';
 
 // generate a random ID to assign to a task
 function generateID() {
@@ -167,6 +168,14 @@ const tasks = {
     };
   },
 
+  sortTasks() {
+    this.existingTasks.sort((a, b) => {
+    const dateA = new Date(a.taskDueDate);
+    const dateB = new Date(b.taskDueDate);
+    return compareAsc(dateA, dateB);
+  });
+  },
+  
   refreshExistingTasks() {
     this.existingTasks = JSON.parse(localStorage.getItem('all-tasks')) || [];
   },

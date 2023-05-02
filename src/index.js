@@ -3,6 +3,7 @@ import {
   form, tasks, removeInput, selector,
 } from './addTasks';
 
+tasks.sortTasks();
 tasks.getExistingTask();
 tasks.checkTasksDate();
 
