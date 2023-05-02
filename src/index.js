@@ -1,10 +1,13 @@
 import './style.css';
 import {
-  form, addTask, getTask, getExistingTask, removeInput, selector,
+  form, tasks, removeInput, selector,
 } from './addTasks';
 
-getExistingTask();
+tasks.getExistingTask();
+tasks.checkTasksDate();
 
+// if form isn't active, then run the animation on click
+// and changes the value inside form to true
 selector.header.addEventListener('click', (event) => {
   event.stopPropagation();
   if (!form.formActive) {
@@ -12,52 +15,37 @@ selector.header.addEventListener('click', (event) => {
   }
 });
 
+// hides the form on click, then changes the value inside the form object to false;
 selector.closeForm_btn.addEventListener('click', (event) => {
   event.stopPropagation();
   form.hideForm();
 });
 
 selector.submitTask_btn.addEventListener('click', (event) => {
-  // avoids submit button to refresh
   event.preventDefault();
-  // generateID();
-
-  // gets tasks and inserts them in the taskContainer
-  const userTask = getTask();
-  addTask(
+  // gets the inputted tasks from form
+  const userTask = tasks.getTask();
+  tasks.addTask(
     userTask.taskDataID,
     userTask.taskName,
     userTask.taskDescription,
     userTask.taskDueDate,
     userTask.taskPriority,
   );
-  // store the tasks locally
-  const existingTasks = JSON.parse(localStorage.getItem('all-tasks')) || [];
-  existingTasks.push(userTask);
-  localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
+  // updates the existingTasks data
+  tasks.refreshExistingTasks();
+  // stores the data locally
+  tasks.existingTasks.push(userTask);
+  localStorage.setItem('all-tasks', JSON.stringify(tasks.existingTasks));
+  // removes input from form
   removeInput();
-
-  selector.taskRemove_btn = document.querySelectorAll('#remove');
-  selector.taskRemove_btn.forEach((button) => {
-    button.addEventListener('click', () => {
-      const dataID = button.closest('.gridContainer').getAttribute('dataID');
-      let existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
-      existingTasks = existingTasks.filter((task) => task.taskDataID !== +dataID);
-      localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
-      button.closest('.gridContainer').remove();
-    });
-  });
+  // refreshes taskRemoveBtn every tasks added to update the nodes in tasks.taskRemove_btn
+  selector.refreshTaskRemoveBtn();
+  tasks.checkTasksDate();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  selector.taskRemove_btn = document.querySelectorAll('#remove');
-  selector.taskRemove_btn.forEach((button) => {
-    button.addEventListener('click', () => {
-      const dataID = button.closest('.gridContainer').getAttribute('dataID');
-      let existingTasks = JSON.parse(localStorage.getItem('all-tasks'));
-      existingTasks = existingTasks.filter((task) => task.taskDataID !== +dataID);
-      localStorage.setItem('all-tasks', JSON.stringify(existingTasks));
-      button.closest('.gridContainer').remove();
-    });
-  });
+  // refreshes taskRemoveBtn in website load to update the nodes in tasks.taskRemove_btn
+  selector.refreshTaskRemoveBtn();
+  tasks.checkTasksDate();
 });
