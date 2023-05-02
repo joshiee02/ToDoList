@@ -252,7 +252,9 @@ section {
   grid-auto-rows: 102.7px;
   gap: 0.5rem;
 } 
-
+  .isDueDate {
+    filter: grayscale(80%);
+  }
   .taskContainer {
     font-family: 'ArcadeClassic';
     word-spacing: 2px;
