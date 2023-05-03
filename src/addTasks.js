@@ -140,7 +140,20 @@ const tasks = {
     removeIcon.classList.add('las', 'la-times');
     removeButton.appendChild(removeIcon);
 
-    selector.section.appendChild(gridContainer);
+    const gridContainerList = Array.from(selector.gridContainer);
+    let inserted = false;
+    for (let i = 0; i < gridContainerList.length; i++) {
+      const currentDueDate = new Date(gridContainerList[i].querySelector('#dueDate').textContent);
+      if (new Date(taskDueDate) < currentDueDate) {
+        selector.section.insertBefore(gridContainer, gridContainerList[i]);
+        inserted = true;
+        break;
+      }
+    }
+    // If the new task due date is greater than all existing tasks, append it at the end
+    if (!inserted) {
+      selector.section.appendChild(gridContainer);
+    }
   },
 
   getExistingTask() {
