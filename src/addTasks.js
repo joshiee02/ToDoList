@@ -124,13 +124,13 @@ const tasks = {
     buttons.setAttribute('id', 'buttons');
     controlBar.appendChild(buttons);
 
-    const editButton = document.createElement('button');
-    editButton.setAttribute('id', 'edit');
-    buttons.appendChild(editButton);
+    const checkButton = document.createElement('button');
+    checkButton.setAttribute('id', 'edit');
+    buttons.appendChild(checkButton);
 
-    const editIcon = document.createElement('i');
-    editIcon.classList.add('las', 'la-edit');
-    editButton.appendChild(editIcon);
+    const checkIcon = document.createElement('i');
+    checkIcon.classList.add('las', 'la-check');
+    checkButton.appendChild(checkIcon);
 
     const removeButton = document.createElement('button');
     removeButton.setAttribute('id', 'remove');
