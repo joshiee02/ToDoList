@@ -28,6 +28,7 @@ selector.submitTask_btn.addEventListener('click', (event) => {
   const userTask = tasks.getTask();
   tasks.addTask(
     userTask.taskDataID,
+    userTask.taskStatus,
     userTask.taskName,
     userTask.taskDescription,
     userTask.taskDueDate,
@@ -42,11 +43,13 @@ selector.submitTask_btn.addEventListener('click', (event) => {
   removeInput();
   // refreshes taskRemoveBtn every tasks added to update the nodes in tasks.taskRemove_btn
   selector.refreshTaskRemoveBtn();
+  selector.refreshTaskDoneBtn();
   tasks.checkTasksDate();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   // refreshes taskRemoveBtn in website load to update the nodes in tasks.taskRemove_btn
   selector.refreshTaskRemoveBtn();
+  selector.refreshTaskDoneBtn();
   tasks.checkTasksDate();
 });

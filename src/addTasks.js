@@ -41,6 +41,22 @@ const selector = {
   refreshGridContainer() {
     this.gridContainer = document.querySelectorAll('.gridContainer');
   },
+  taskDone_btn: document.querySelectorAll('#done'),
+  refreshTaskDoneBtn() {
+    this.taskDone_btn = document.querySelectorAll('#done')
+    this.taskDone_btn.forEach((button => {
+      button.addEventListener('click', () => {
+        button.closest('.gridContainer').classList.add('isDone');
+        const dataID = button.closest('.gridContainer').getAttribute('dataID');
+        tasks.existingTasks.forEach((task) => {
+          if (task.taskDataID == dataID) {
+            task.taskStatus = 'isDone';
+            localStorage.setItem('all-tasks', JSON.stringify(tasks.existingTasks));
+          }
+        })
+      })
+    }))
+  },
   taskRemove_btn: document.querySelectorAll('#remove'),
   refreshTaskRemoveBtn() {
     this.taskRemove_btn = document.querySelectorAll('#remove');
@@ -72,11 +88,15 @@ const tasks = {
     });
   },
 
-  addTask(taskDataID, taskName, taskDescription, taskDueDate, taskPriority) {
+  addTask(taskDataID, taskStatus, taskName, taskDescription, taskDueDate, taskPriority) {
     // Create the gridContainer element
     const gridContainer = document.createElement('div');
     gridContainer.classList.add('gridContainer');
     gridContainer.setAttribute('dataID', taskDataID);
+
+    if(taskStatus == 'isDone') {
+      gridContainer.classList.add('isDone');
+    }
 
     // Create the child elements on gridContainer
     const taskContainer = document.createElement('div');
@@ -125,7 +145,7 @@ const tasks = {
     controlBar.appendChild(buttons);
 
     const checkButton = document.createElement('button');
-    checkButton.setAttribute('id', 'edit');
+    checkButton.setAttribute('id', 'done');
     buttons.appendChild(checkButton);
 
     const checkIcon = document.createElement('i');
@@ -161,6 +181,7 @@ const tasks = {
       for (let i = 0; i < this.existingTasks.length; i += 1) {
         tasks.addTask(
           this.existingTasks[i].taskDataID,
+          this.existingTasks[i].taskStatus,
           this.existingTasks[i].taskName,
           this.existingTasks[i].taskDescription,
           this.existingTasks[i].taskDueDate,
@@ -176,8 +197,9 @@ const tasks = {
     const taskDescription = document.querySelector('textarea[id="description"]').value;
     const taskDueDate = document.querySelector('input[id="due-date"]').value;
     const taskPriority = document.querySelector('input[name="priority"]:checked').value;
+    const taskStatus = 'notDone';
     return {
-      taskDataID, taskName, taskDescription, taskDueDate, taskPriority,
+      taskDataID, taskStatus, taskName, taskDescription, taskDueDate, taskPriority,
     };
   },
 
