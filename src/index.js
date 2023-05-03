@@ -50,7 +50,6 @@ selector.submitTask_btn.addEventListener('click', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  selector.cursor_img.src = img;
   // refreshes taskRemoveBtn in website load to update the nodes in tasks.taskRemove_btn
   selector.refreshTaskRemoveBtn();
   selector.refreshTaskDoneBtn();
