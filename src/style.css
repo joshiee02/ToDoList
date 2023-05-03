@@ -252,8 +252,11 @@ section {
   grid-auto-rows: 102.7px;
   gap: 0.5rem;
 } 
+  .isDone {
+    filter: sepia(1) hue-rotate(90deg) brightness(0.8) saturate(0.8);
+  }
   .isDueDate {
-    filter: grayscale(80%);
+    filter: sepia(1) hue-rotate(0deg) brightness(0.8) saturate(0.8);
   }
   .taskContainer {
     font-family: 'ArcadeClassic';
@@ -335,7 +338,7 @@ section {
       display: flex;
       width: 27.5%;
     }
-      #edit, #remove {
+      #done, #remove {
         display: flex;
         justify-content: center;
         padding: 0;
@@ -347,7 +350,7 @@ section {
         border-bottom: 1px solid black;
         background-color: #F6ECD5;
       }
-      #edit:active, #remove:active {
+      #done:active, #remove:active {
         border-top: 1px inset #F6ECD5;
         border-left: 1px inset black;
         border-right: 1px inset black;
@@ -387,8 +390,8 @@ section {
     }
     #closeFormBtn {
       position: relative;
-      top: -100px;
-      right: -148px;
+      top: -23%;
+      right: -46%;
       padding: 0;
       text-align: center;
       width: 21px;
@@ -456,8 +459,8 @@ section {
     }
     #closeFormBtn {
       position: relative;
-      top: -101px;
-      right: -105px;
+      top: -23%;
+      right: -44%;
       padding: 0;
       text-align: center;
       width: 21px;
