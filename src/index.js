@@ -3,6 +3,9 @@ import {
   form, tasks, removeInput, selector,
 } from './addTasks';
 
+import img from './img/mouseCursor.png'
+selector.cursor_img.src = img;
+
 tasks.sortTasks();
 tasks.getExistingTask();
 tasks.checkTasksDate();
